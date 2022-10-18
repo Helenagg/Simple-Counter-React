@@ -17,7 +17,12 @@ const Home = (props) => {
 			</div>
 			<div className="container d-flex text-center bg-dark">		
 				<h1 className="text-white"><i class="fa-regular fa-clock"></i></h1>
-				<button type="button" className="btn btn-light" onClick="">{props.end}</button>
+				<h1 className="text-white">{props.end}</h1>
+			</div>
+			<div className="container d-flex text-center bg-dark">		
+				<button type="button" className="btn btn-light" >Stop</button>
+				<button type="button" className="btn btn-light">Restart</button>
+				<button type="button" className="btn btn-light">Resumption</button>
 			</div>
 		</>
 	);

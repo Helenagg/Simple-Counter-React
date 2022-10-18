@@ -21,7 +21,7 @@ const counter = setInterval ((()=>{
     ReactDOM.render(<Home count={countInit} end={countEnd}/>, document.querySelector("#app"));
 }),1000) 
 
-let countEnd = 100;
+let countEnd = prompt('Indica un número ');
 const counterNeg = setInterval ((()=>{
     countEnd = countEnd - 1;
     ReactDOM.render(<Home count={countInit} end={countEnd}/>, document.querySelector("#app"));
