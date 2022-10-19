@@ -18,14 +18,31 @@ let countInit = 0;
 const counter = setInterval ((()=>{
     countInit += 1;
     //ReactDOM.render(<Home count={countInit}/>, document.querySelector("#app"));
-    ReactDOM.render(<Home count={countInit} end={countEnd}/>, document.querySelector("#app"));
+    ReactDOM.render(<Home count={countInit} end={countEnd} stop={stopCounter} reiniciar={reiniciarCounter} reanudar={reanudarCounter}/>, document.querySelector("#app"));
+
 }),1000) 
 
 let countEnd = prompt('Indica un número ');
 const counterNeg = setInterval ((()=>{
     countEnd = countEnd - 1;
-    ReactDOM.render(<Home count={countInit} end={countEnd}/>, document.querySelector("#app"));
+    ReactDOM.render(<Home count={countInit} end={countEnd} stop={stopCounter} reiniciar={reiniciarCounter} reanudar={reanudarCounter}/>, document.querySelector("#app"));
+
 }),1000) 
 
+const stopCounter = () => {
+    clearInterval(countInit);
+    //countInit = null;
+}
 
-ReactDOM.render(<Home count={countInit} end={countEnd}/>, document.querySelector("#app"));
+const reiniciarCounter = () => {
+   clearInterval(countInit);
+    countInit = 0;
+    counter();
+}
+
+const reanudarCounter = () => {
+    stopCounter();
+    counter();
+}
+
+ReactDOM.render(<Home count={countInit} end={countEnd} stop={stopCounter} reiniciar={reiniciarCounter} reanudar={reanudarCounter}/>, document.querySelector("#app"));

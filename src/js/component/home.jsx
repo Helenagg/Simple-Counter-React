@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-
+const stopCounter = () => {
+    clearInterval(countInit);
+    countInit = null;
+}
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -20,9 +23,9 @@ const Home = (props) => {
 				<h1 className="text-white">{props.end}</h1>
 			</div>
 			<div className="container d-flex text-center bg-dark">		
-				<button type="button" className="btn btn-light" >Stop</button>
-				<button type="button" className="btn btn-light">Restart</button>
-				<button type="button" className="btn btn-light">Resumption</button>
+				<button type="button" className="btn btn-light" onClick={props.stop}>Stop</button>
+				<button type="button" className="btn btn-light" onClick={props.reiniciar}>Reiniciar</button>
+				<button type="button" className="btn btn-light" onCanPlay={props.reanudar}>Reanudar</button>
 			</div>
 		</>
 	);
