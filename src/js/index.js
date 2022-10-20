@@ -12,14 +12,14 @@ import Home from "./component/home.jsx";
 
 
 //render your react application
-let counter;
+
 let countInit = 0;
 let decenas = 0;
 let centenas = 0;
 let millar = 0;
 let dmillar = 0;
 
-counter = setInterval ((()=>{
+const counter = setInterval ((()=>{
     countInit += 1;
     if (countInit === 10) {
         decenas ++;
@@ -40,6 +40,7 @@ counter = setInterval ((()=>{
                     centena={centenas} 
                     mil={millar} 
                     diezmil={dmillar} 
+                    numero={num}
                     end={countEnd}
                     stop={stopCounter} 
                     reiniciar={reiniciarCounter} 
@@ -47,45 +48,70 @@ counter = setInterval ((()=>{
 
 }),1000) 
 
-let countEnd = prompt('Indica un número ');
 
-const counterNeg = setInterval ((()=>{
-    countEnd = countEnd - 1;
-    if (countEnd === 10) {alert("Te quedan 10 segundos")};
-    ReactDOM.render(<Home unidad={countInit} 
-        decena={decenas} 
-        centena={centenas} 
-        mil={millar} 
-        diezmil={dmillar} 
-        end={countEnd}
-        stop={stopCounter} 
-        reiniciar={reiniciarCounter} 
-        reanudar={reanudarCounter}/>, document.querySelector("#app"));
 
-}),1000) 
+    //let countEnd = prompt('Indica un número ');
+    const num = () => {
+          return prompt('Indica un número ');
+    }
+    
+    let countEnd = num;
+    console.log(countEnd);
+    const counterNeg = setInterval ((()=>{
+        let countEnd = parseInt(num);
+        countEnd = countEnd - 1;
+        if (countEnd === 10) {alert("Te quedan 10 segundos")}
+        if (countEnd === 0) {clearInterval(counterNeg)};
+        ReactDOM.render(<Home unidad={countInit} 
+            decena={decenas} 
+            centena={centenas} 
+            mil={millar} 
+            diezmil={dmillar} 
+            numero={num}
+            end={countEnd}
+            stop={stopCounter} 
+            reiniciar={reiniciarCounter} 
+            reanudar={reanudarCounter}/>, document.querySelector("#app"));
+
+    }),1000)
+
 
 const stopCounter = () => {
-    clearInterval(countInit);
+    clearInterval(counter);
     //countInit = null;
 }
 
 const reiniciarCounter = () => {
    clearInterval(countInit);
     countInit = 0;
-    counter;
+    decenas = 0;
+    centenas = 0;
+    millar = 0;
+    dmillar = 0;
+    if (countInit === 0) return counter();
 }
 
+//let comprobar = false;
 const reanudarCounter = () => {
-    stopCounter();
-    counter();
+    if (countInit !== 0 || decenas !== 0) return counter;
+    // if(!comprobar) {
+    //     comprobar === true;
+    //     clearInterval(counter)
+    // } else {
+    //     comprobar === false;
+    //     counter();
+    // }
+    //stopCounter();
+    //counter();
 }
 
 ReactDOM.render(<Home unidad={countInit} 
     decena={decenas} 
     centena={centenas} 
     mil={millar} 
-    diezmil={dmillar} 
+    diezmil={dmillar}
     end={countEnd}
+    numero={num}
     stop={stopCounter} 
     reiniciar={reiniciarCounter} 
     reanudar={reanudarCounter}/>, document.querySelector("#app"));
