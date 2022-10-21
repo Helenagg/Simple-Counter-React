@@ -39,8 +39,7 @@ const counter = setInterval ((()=>{
                     decena={decenas} 
                     centena={centenas} 
                     mil={millar} 
-                    diezmil={dmillar} 
-                    numero={num}
+                    diezmil={dmillar}
                     end={countEnd}
                     stop={stopCounter} 
                     reiniciar={reiniciarCounter} 
@@ -48,17 +47,9 @@ const counter = setInterval ((()=>{
 
 }),1000) 
 
-
-
-    //let countEnd = prompt('Indica un número ');
-    const num = () => {
-          return prompt('Indica un número ');
-    }
     
-    let countEnd = num;
-    console.log(countEnd);
+    let countEnd = prompt('Indica un número ');
     const counterNeg = setInterval ((()=>{
-        let countEnd = parseInt(num);
         countEnd = countEnd - 1;
         if (countEnd === 10) {alert("Te quedan 10 segundos")}
         if (countEnd === 0) {clearInterval(counterNeg)};
@@ -66,8 +57,7 @@ const counter = setInterval ((()=>{
             decena={decenas} 
             centena={centenas} 
             mil={millar} 
-            diezmil={dmillar} 
-            numero={num}
+            diezmil={dmillar}
             end={countEnd}
             stop={stopCounter} 
             reiniciar={reiniciarCounter} 
@@ -93,7 +83,7 @@ const reiniciarCounter = () => {
 
 //let comprobar = false;
 const reanudarCounter = () => {
-    if (countInit !== 0 || decenas !== 0) return counter;
+    if (countInit !== 0 || decenas !== 0) return counter();
     // if(!comprobar) {
     //     comprobar === true;
     //     clearInterval(counter)
@@ -111,7 +101,7 @@ ReactDOM.render(<Home unidad={countInit}
     mil={millar} 
     diezmil={dmillar}
     end={countEnd}
-    numero={num}
+    /*numero={num}*/
     stop={stopCounter} 
     reiniciar={reiniciarCounter} 
     reanudar={reanudarCounter}/>, document.querySelector("#app"));
