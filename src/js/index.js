@@ -18,9 +18,11 @@ let decenas = 0;
 let centenas = 0;
 let millar = 0;
 let dmillar = 0;
+let stop = false;
 
 const counter = setInterval ((()=>{
-    countInit += 1;
+    
+    if(!stop) {countInit += 1;}
     if (countInit === 10) {
         decenas ++;
         countInit = 0;}       
@@ -65,17 +67,16 @@ const counter = setInterval ((()=>{
 
 
 const stopCounter = () => {
-    clearInterval(counter);
+    stop = true;
 }
 
 const reiniciarCounter = () => {
-   clearInterval(countInit);
+    stop = false;
     countInit = 0;
     decenas = 0;
     centenas = 0;
     millar = 0;
     dmillar = 0;
-    if (countInit === 0) return counter();
 }
 
 
