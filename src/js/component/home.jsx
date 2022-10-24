@@ -28,7 +28,6 @@ const Home = (props) => {
 			<div className="container">
 				<div className="pt-3 m-2 d-grid gap-2">		
 					<button type="button" className="btn btn-danger" onClick={props.stop}>Stop</button>
-					<button type="button" className="btn btn-info" onClick={props.reanudar}>Reanudar</button>
 					<button type="button" className="btn btn-success" onClick={props.reiniciar}>Reiniciar</button>
 				</div>
 			</div>

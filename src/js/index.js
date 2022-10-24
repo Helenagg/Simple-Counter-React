@@ -42,8 +42,7 @@ const counter = setInterval ((()=>{
                     diezmil={dmillar}
                     end={countEnd}
                     stop={stopCounter} 
-                    reiniciar={reiniciarCounter} 
-                    reanudar={reanudarCounter}/>, document.querySelector("#app"));
+                    reiniciar={reiniciarCounter} />, document.querySelector("#app"));
 
 }),1000) 
 
@@ -60,15 +59,13 @@ const counter = setInterval ((()=>{
             diezmil={dmillar}
             end={countEnd}
             stop={stopCounter} 
-            reiniciar={reiniciarCounter} 
-            reanudar={reanudarCounter}/>, document.querySelector("#app"));
+            reiniciar={reiniciarCounter}/>, document.querySelector("#app"));
 
     }),1000)
 
 
 const stopCounter = () => {
     clearInterval(counter);
-    //countInit = null;
 }
 
 const reiniciarCounter = () => {
@@ -81,19 +78,6 @@ const reiniciarCounter = () => {
     if (countInit === 0) return counter();
 }
 
-//let comprobar = false;
-const reanudarCounter = () => {
-    if (countInit !== 0 || decenas !== 0) return counter();
-    // if(!comprobar) {
-    //     comprobar === true;
-    //     clearInterval(counter)
-    // } else {
-    //     comprobar === false;
-    //     counter();
-    // }
-    //stopCounter();
-    //counter();
-}
 
 ReactDOM.render(<Home unidad={countInit} 
     decena={decenas} 
@@ -101,7 +85,5 @@ ReactDOM.render(<Home unidad={countInit}
     mil={millar} 
     diezmil={dmillar}
     end={countEnd}
-    /*numero={num}*/
     stop={stopCounter} 
-    reiniciar={reiniciarCounter} 
-    reanudar={reanudarCounter}/>, document.querySelector("#app"));
+    reiniciar={reiniciarCounter}/>, document.querySelector("#app"));
